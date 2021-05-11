@@ -10,6 +10,7 @@ public class Movie
 
     public Movie(String newtitle, int newpriceCode)
     {
+        price = Price.getPriceObject(newpriceCode);
         title = newtitle;
         priceCode = newpriceCode;
     }
@@ -35,24 +36,7 @@ public class Movie
 
     public double getCharge(int daysRented)
     {
-        double result = 0.0;
-        switch (getPriceCode())
-        {
-            case Price.REGULAR:
-                result += 2;
-                if (daysRented > 2)
-                    result += (daysRented - 2) * 1.5;
-                break;
-            case Price.NEW_RELEASE:
-                result += daysRented * 3;
-                break;
-            case Price.CHILDRENS:
-                result += 1.5;
-                if (daysRented > 3)
-                    result += (daysRented - 3) * 1.5;
-                break;
-        }
-        return result;
+        return price.getPrice(daysRented);
     }
 
 
@@ -60,7 +44,7 @@ public class Movie
     {
         int resultPoints = 1;
 
-        if ((getPriceCode() == Price.NEW_RELEASE) && daysRented > 1)
+        if ((getPriceCode() == Price.NEW_RELEASE_CODE) && daysRented > 1)
         {
             resultPoints++;
         }

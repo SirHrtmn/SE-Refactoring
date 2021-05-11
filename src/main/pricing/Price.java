@@ -33,6 +33,10 @@ public abstract class Price
 
     public static class RegularPrice extends Price
     {
+        public int getPriceCode()
+        {
+            return Price.REGULAR_CODE;
+        }
         
         @Override
         public double getPrice(int daysRented)
@@ -49,6 +53,10 @@ public abstract class Price
 
     public static class NewReleasePrice extends Price
     {
+        public int getPriceCode()
+        {
+            return Price.NEW_RELEASE_CODE;
+        }
 
         @Override
         public double getPrice(int daysRented)
@@ -60,6 +68,10 @@ public abstract class Price
 
     public static class ChildrensPrice extends Price
     {
+        public int getPriceCode()
+        {
+            return Price.CHILDRENS_CODE;
+        }
 
         @Override
         public double getPrice(int daysRented)
