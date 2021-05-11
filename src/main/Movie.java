@@ -1,14 +1,12 @@
 package main;
 
+import main.pricing.Price;
 
 public class Movie
-{
-    public static final int CHILDRENS = 2;
-    public static final int REGULAR = 0;
-    public static final int NEW_RELEASE = 1;
-    
+{    
     private String title;
     private int priceCode;
+    private Price price;
 
     public Movie(String newtitle, int newpriceCode)
     {
@@ -40,15 +38,15 @@ public class Movie
         double result = 0.0;
         switch (getPriceCode())
         {
-            case Movie.REGULAR:
+            case Price.REGULAR:
                 result += 2;
                 if (daysRented > 2)
                     result += (daysRented - 2) * 1.5;
                 break;
-            case Movie.NEW_RELEASE:
+            case Price.NEW_RELEASE:
                 result += daysRented * 3;
                 break;
-            case Movie.CHILDRENS:
+            case Price.CHILDRENS:
                 result += 1.5;
                 if (daysRented > 3)
                     result += (daysRented - 3) * 1.5;
@@ -62,7 +60,7 @@ public class Movie
     {
         int resultPoints = 1;
 
-        if ((getPriceCode() == Movie.NEW_RELEASE) && daysRented > 1)
+        if ((getPriceCode() == Price.NEW_RELEASE) && daysRented > 1)
         {
             resultPoints++;
         }
