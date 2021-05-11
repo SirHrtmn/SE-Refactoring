@@ -40,12 +40,5 @@ public class ProgramTest
         Assert.assertEquals(PROGRAM_RESULT, c1.statement());
         
     }
-    
-    @Test
-    public void testRental()
-    {
-        Rental rental = new Rental(new Movie("movie", 1), 3);
-        Assert.assertEquals(((Double)rental.getCharge()).compareTo(9.0), 0);
-    }
 
 }
