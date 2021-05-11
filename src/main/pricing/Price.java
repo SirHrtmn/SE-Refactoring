@@ -10,13 +10,28 @@ package main.pricing;
 
 public abstract class Price
 {
-    public static final int REGULAR = 0;
-    public static final int NEW_RELEASE = 1;
-    public static final int CHILDRENS = 2;
+    public static final int REGULAR_CODE = 0;
+    public static final int NEW_RELEASE_CODE = 1;
+    public static final int CHILDRENS_CODE = 2;
     
     public abstract double getPrice(int daysRented);
+    
+    public static Price getPriceObject(int priceCode)
+    {
+        switch (priceCode)
+        {
+            case REGULAR_CODE:
+                return new RegularPrice();
+            case NEW_RELEASE_CODE:
+                return new NewReleasePrice();
+            case CHILDRENS_CODE:
+                return new ChildrensPrice();
+            default:
+                return null;
+        }
+    }
 
-    public class RegularPrice extends Price
+    public static class RegularPrice extends Price
     {
         
         @Override
@@ -32,7 +47,7 @@ public abstract class Price
 
     }
 
-    public class NewReleasePrice extends Price
+    public static class NewReleasePrice extends Price
     {
 
         @Override
@@ -43,7 +58,7 @@ public abstract class Price
 
     }
 
-    public class ChildrensPrice extends Price
+    public static class ChildrensPrice extends Price
     {
 
         @Override
