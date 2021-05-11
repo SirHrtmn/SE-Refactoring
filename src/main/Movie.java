@@ -5,26 +5,24 @@ import main.pricing.Price;
 public class Movie
 {    
     private String title;
-    private int priceCode;
     private Price price;
 
     public Movie(String newtitle, int newpriceCode)
     {
-        price = Price.getPriceObject(newpriceCode);
+        price = Price.getNewPriceObject(newpriceCode);
         title = newtitle;
-        priceCode = newpriceCode;
     }
 
 
     public int getPriceCode()
     {
-        return priceCode;
+        return price.getPriceCode();
     }
 
 
     public void setPriceCode(int arg)
     {
-        priceCode = arg;
+        price = Price.getNewPriceObject(arg);
     }
 
 

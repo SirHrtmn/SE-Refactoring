@@ -16,7 +16,9 @@ public abstract class Price
     
     public abstract double getPrice(int daysRented);
     
-    public static Price getPriceObject(int priceCode)
+    public abstract int getPriceCode();
+    
+    public static Price getNewPriceObject(int priceCode)
     {
         switch (priceCode)
         {
@@ -33,6 +35,7 @@ public abstract class Price
 
     public static class RegularPrice extends Price
     {
+        @Override
         public int getPriceCode()
         {
             return Price.REGULAR_CODE;
@@ -53,6 +56,7 @@ public abstract class Price
 
     public static class NewReleasePrice extends Price
     {
+        @Override
         public int getPriceCode()
         {
             return Price.NEW_RELEASE_CODE;
@@ -68,6 +72,7 @@ public abstract class Price
 
     public static class ChildrensPrice extends Price
     {
+        @Override
         public int getPriceCode()
         {
             return Price.CHILDRENS_CODE;
